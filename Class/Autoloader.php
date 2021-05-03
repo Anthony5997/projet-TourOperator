@@ -7,7 +7,7 @@ class Autoloader{
     }
     
     static function autoload($className){
-        require("Class/" . $className . ".php");
+        require("../Class/" . $className . ".php");
     }
 
 }

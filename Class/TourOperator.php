@@ -5,8 +5,9 @@ class TourOperator{
 
     private int $id;
     private string $name;
+    private string $pass;
     private int $grade;
-    private string $link;
+    private $link;
     private bool $is_premium;
 
     /*Methode*/
@@ -28,6 +29,7 @@ class TourOperator{
         }
       }
 
+    /* GETTER */
     public function getId(){
         return $this->id;
     }
@@ -47,4 +49,31 @@ class TourOperator{
     public function getPremium(){
         return $this->is_premium;
     }
+
+    /*SETTER*/ 
+
+    public function setId(int $id){
+        $this->id = $id;
+    }
+
+    public function setName(string $name){
+        $this->name = $name;
+    }
+
+    public function setPass(string $pass){
+        $this->pass = $pass;
+    }
+
+    public function setGrade(int $grade){
+        $this->grade = $grade;
+    }
+
+    public function setLink($link){
+        $this->link = $link;
+    }
+
+    public function setIs_premium(bool $is_premium){
+        $this->is_premium = $is_premium;
+    }
+
 }
