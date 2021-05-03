@@ -38,6 +38,11 @@ class TourOperator{
         return $this->name;
     }
 
+    public function getPass(){
+        return $this->pass;
+    }
+
+
     public function getGrade(){
         return $this->grade;
     }

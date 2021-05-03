@@ -41,4 +41,20 @@ class Review{
     public function getId_tour_operator(){
         return $this->id_tour_operator;
     }
+
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function setMessage($message){
+        $this->message = $message;
+    }
+
+    public function setAuthor($author){
+        $this->author = $author;
+    }
+
+    public function setId_tour_operator($id_tour_operator){
+        $this->id_tour_operator = $id_tour_operator;
+    }
 }

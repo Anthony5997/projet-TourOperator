@@ -5,14 +5,14 @@ include("partials/header.php");
   <div class="container sign-form">
       <h1 class="text-center sign-h1">Voyage voyage</h1>
       <div class="style-form">          
-            <form method="post" action="process/connexion-process.php">
+            <form method="post" action="process/sign-up-process.php">
             <div class="form-group">
-                <input type="text" class="form-control sign-input" name="mailVerif" id="mailVerif" aria-describedby="emailHelp" placeholder="Adresse mail">
+                <input type="text" class="form-control sign-input" name="name" id="name" placeholder="Nom d'agence">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control sign-input" name="passVerif" id="passVerif" placeholder="Mot de passe">
+                <input type="password" class="form-control sign-input" name="pass" id="pass" placeholder="Mot de passe">
             </div>
-            <button type="submit" class="btn btn-primary col-sm-12 sign-input-button">Submit</button>
+            <button type="submit" class="btn btn-primary col-sm-12 sign-input-button" name="connexion">Submit</button>
             </form>
       </div>
     </div>

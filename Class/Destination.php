@@ -41,4 +41,20 @@ class Destination{
     public function getId_tour_operator(){
         return $this->id_tour_operator;
     }
+
+    public function setId(int $id){
+        $this->id = $id;
+    }
+
+    public function setLocation(string $location){
+        $this->location = $location;
+    }
+
+    public function setPrice(int $price){
+        $this->price = $price;
+    }
+
+    public function setId_tour_operator(int $id_tour_operator){
+        $this->id_tour_operator = $id_tour_operator;
+    }
 }
