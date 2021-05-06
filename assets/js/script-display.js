@@ -4,6 +4,7 @@ $(document).ready(function(){
     $(".hiddenPicture").hide();
     $(".hidden-form-comment").hide();
     $(".form-destination").hide();
+    $(".form-operator").hide();
 });
 
 $( ".modify" ).click(function() {
@@ -31,3 +32,7 @@ $( ".hidden-form-destination" ).click(function() {
   let id = this.getAttribute('id');
     $(`#hidden-form-destination${id}`).toggle();
   });
+
+  $( ".hidden-form-operator" ).click(function() {
+      $(`#hidden-form-operator`).toggle();
+    });

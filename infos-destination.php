@@ -1,10 +1,10 @@
 <?php
-require("partials/sql_connect.php");
-include('partials/header.php');
-$location = $_GET['destination'];
-$manager = new Manager($bdd);
-$listDestination = $manager->getOperatorByDestination($location);
-//$manager->getSimilarDestination($location); ?>
+  require("partials/sql_connect.php");
+  include('partials/header.php');
+  $location = $_GET['destination'];
+  $manager = new Manager($bdd);
+  $listDestination = $manager->getOperatorByDestination($location);
+?>
 <section>
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -28,6 +28,21 @@ $listDestination = $manager->getOperatorByDestination($location);
   </button>
 </div>
 </section>
+  <div class="container">
+      <div class="row">
+          <div class="d-flex">
+              <div class="col-sm-4">
+                  <a class="nav-link text-center" href="/project-tourOperator/index.php">Home</a>
+              </div>
+              <div class="col-sm-4 d-flex">
+                  <a class="nav-link text-center" href="#">Destinations</a>
+              </div>
+              <div class="col-sm-4">
+                  <a class="nav-link text-center " href="/project-tourOperator/agence.php">Agences</a>
+              </div>
+          </div>
+      </div>
+  </div>
 <section class="indexContent">
     <h1 class="text-center">Les meilleurs Voyages</h1>
     <h4 class="text-center">Destination : <?=$location;?></h4>
@@ -65,7 +80,6 @@ $listDestination = $manager->getOperatorByDestination($location);
                       </div>
                     </div>
                   </div>
-                <?php include('review-form.php'); ?>
               </div>
              <?php }  ?>
     </div>

@@ -4,9 +4,24 @@ include('../partials/header.php');
 ?>
     <h1 class="text-center">Admin Pannel</h1>
     <h3 class="text-center">Liste des opérateurs</h3>
-    <div class="d-flex justify-content-center">
-        <a class='admin-link text-center' href='/project-tourOperator/admin/admin-form-add-operator.php'>Ajouter un nouvel opérateur</a><br>
+    <div class="hidden-form-operator d-flex justify-content-center">
+        <a class='admin-link text-center'>Ajouter un nouvel opérateur</a><br>
     </div>
+        <div class="form-operator" id="hidden-form-operator">
+            <div class="container-style">
+                <div class="container sign-form">         
+                    <form method="post" action="/project-tourOperator/admin/process/admin-addNewOperator.php">
+                    <div class="form-group">
+                        <input type="text" class="form-control sign-input" name="name" id="name" placeholder="Nouvelle Agence">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control sign-input" name="pass" id="pass" placeholder="Pass de l'agence">
+                    </div>
+                    <button type="submit" class="btn btn-primary col-sm-12 sign-input-button">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     <div class="container">
             <div class="row justify-content-center">
                 <?php

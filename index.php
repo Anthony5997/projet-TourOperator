@@ -28,17 +28,14 @@ include('partials/header.php');
     <div class="container">
         <div class="row">
             <div class="d-flex">
-                <div class="col-sm-3">
-                    <a class="nav-link text-center" href="#">Home</a>
+                <div class="col-sm-4">
+                    <a class="nav-link text-center" href="/project-tourOperator/index.php">Home</a>
                 </div>
-                <div class="col-sm-3 d-flex">
+                <div class="col-sm-4 d-flex">
                     <a class="nav-link text-center" href="#">Destinations</a>
                 </div>
-                <div class="col-sm-3">
-                    <a class="nav-link text-center " href="#">Agences</a>
-                </div>
-                <div class="col-sm-3">
-                    <a class="nav-link text-center" href="#">Disabled</a>
+                <div class="col-sm-4">
+                    <a class="nav-link text-center " href="/project-tourOperator/agence.php">Agences</a>
                 </div>
             </div>
         </div>
