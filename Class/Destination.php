@@ -6,6 +6,7 @@ class Destination{
     private string $location;
     private int $price;
     private int $id_tour_operator;
+    private $photo_link_destination;
 
     /*Methode*/
 
@@ -42,6 +43,10 @@ class Destination{
         return $this->id_tour_operator;
     }
 
+    public function getPhoto_link_destination(){
+        return $this->photo_link_destination;
+    }
+
     public function setId(int $id){
         $this->id = $id;
     }
@@ -56,5 +61,9 @@ class Destination{
 
     public function setId_tour_operator(int $id_tour_operator){
         $this->id_tour_operator = $id_tour_operator;
+    }
+
+    public function setPhoto_link_destination( $photo_link_destination){
+        $this->photo_link_destination = $photo_link_destination;
     }
 }

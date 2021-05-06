@@ -1,0 +1,448 @@
+/* ****************NAVBAR*****************/
+* {
+    box-sizing: border-box;
+  }
+  
+  /************ FIN NAVBAR****************/
+  .indexHeader{
+    width: 100%;
+    height: 430px;
+    background-image: url("/project-tourOperator/assets/images/headerPlage.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .indexContent{
+      width: 100%;
+      height: auto;
+      background-color: aliceblue;
+      padding-top: 20px;
+      padding: 20px;
+
+  }
+  .sign-form{
+      margin-top: 12px;
+      margin-bottom: 12px;
+      max-width: 350px;
+      border: 1px solid #dbdbdb;
+      
+  }
+
+  .carousel-inner {
+    height: 560px;
+  }
+  .carousel-inner{
+    width: 100%;
+  
+  }
+  .carousel-item img{
+    width: 100%;
+    margin: 0 auto;
+    background-position: center;
+    background-size: cover;
+    
+  }
+  /*********************CARD ZONE***************************/
+
+  .modify{
+    display: flex;
+    justify-content: left;
+    margin: 4px;
+  }
+
+  .admin-button-update{
+      background-color: darkgoldenrod;
+      border-radius: 4px;
+      color:aliceblue;
+      border: 1px solid yellow;
+
+  }
+  
+  .card-info-destination{
+    
+    border: 1px solid darkgoldenrod;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: white;
+
+    h5{
+      text-align: center;
+    }
+
+    img{
+      width: 100%;
+      height: auto;
+      min-height: 280px;
+      max-height: 300px;
+      border-bottom: 1px lightgray solid;
+    }
+
+
+    .user-avis{
+      margin-top: 5px;
+      padding: 5px;
+    
+    }
+    .card-info{
+      
+      .card-sub-info{
+        background-color: white;
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+      
+    }
+  
+  .comment-zone{
+    width: 100%;
+    height:260px; 
+    overflow: auto;
+    padding-right: 5px;
+  }
+
+  .card-review{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: lightblue 1px solid;
+    background-color: rgb(255, 255, 255);
+    
+    h4{
+      font-size: 16px;
+      text-align: left;
+    }
+    p{
+      font-size: 12px;
+    }
+    .note{
+      
+    }
+
+  }
+  .h3-review{
+    padding: 10px;
+    font-size: 23px;
+
+
+  }
+  .form-review{
+    margin-top: 10px;
+    border-top: solid 1px black;
+
+    input{
+      padding: 10px;
+      margin-top: 10px;
+    }
+  }
+}
+
+  /****CARD ZONE**/
+  
+  .destination-form{
+    
+    margin-top: 18px;
+    max-width: 350px;
+    border: 1px solid #dbdbdb;
+    
+  }
+  
+  .style-form{
+    justify-content: center;
+    margin: 24px;
+    padding: 10px;
+  }
+  
+  .sign-h1{
+    margin: 22px auto 12px;
+    font-family: 'Norican', cursive;
+    
+  }
+  
+  .sign-input{
+    margin-top: 20px;
+    background-color: #ffffffa8;
+  }
+  
+  .sign-input-button{
+    
+    width: 40%;
+    margin-top: 15px;
+    background-color: #a9d6e5;
+    border: none;
+    margin-bottom: 5px;
+  }
+  
+  /**Début Form sign-in*/
+  .sign{
+    border: 1px solid #dbdbdb;
+    padding: 15px;
+    }
+    .inscription{
+      margin-top: 5vw;
+      display: flex;
+      justify-content: center;
+    }
+    .sign h4{
+      font-family: 'Norican', cursive;
+      text-align: center;
+      font-size: 60px;
+     
+    }
+    .sign h6{
+    
+      text-align: center;
+      color: gray;
+      font-size: 20px;
+    }
+    .btn{
+      background-color: #a9d6e5;
+      border: none;
+      color: white;
+    }
+    .sign p{
+      text-align: center;
+      margin-top: 2vw;
+      color: gray;
+      font-size: 15px;
+    }
+    .connect{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-top: 2vw;
+      border: 1px solid #dbdbdb;
+      padding: 20px;
+      margin-left: 34vw ;
+      margin-right: 34vw ;
+    
+    }
+  
+    /******************IMAGE PROFILE********************/
+  /***********************ADMIN PANNEL****************/
+
+  .admin-link{
+    width: 20%;
+    text-decoration: none;
+    border: grey 1px solid;
+    margin: 10px;
+    padding: 10px;
+    background-color: lightskyblue;
+    border-radius: 10px;
+    color: aliceblue;
+    justify-content: center;
+
+  }
+  .admin-link:hover{
+    color:white;
+    background-color: orange;
+    
+  }
+    .img-profil{
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+  
+  }
+  
+  .image-profil img{
+    width:100px;
+    height: 100px;
+    clip-path:ellipse(50% 50%);
+    margin-left: 5vw;
+  
+  }
+  
+   .tableau h5{
+    color: black;
+    text-align: center;
+    margin-top: 5vw;
+    border: 1px solid #dbdbdb;
+  }
+  .image-board{
+  margin-bottom: 1vw;
+  margin-top: 1vw;
+  }
+  .a-img-txt{
+  display:grid; 
+  }
+  
+  
+  .a-img-txt>*{
+  grid-area:1/1/-1/-1; 
+  
+  }
+  .a-img{
+  filter:invert(1);
+  }
+  
+  .a-txt{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  opacity:0;
+  filter:invert(0); 
+  transition:opacity .8s;
+  }
+  
+  .c1{
+    background:#2b2a29cc; 
+  } 
+    .a-txt:hover{
+  opacity:1;
+  }
+  .a-img-txt:hover .a-img{
+  filter:invert(0);
+  }
+  /* la déco */
+  .image-board img{
+  
+  height: 293px; 
+  width: 293px;
+  
+  }
+  .image-board-home{
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    padding: 20px;
+  }
+  
+  .image-board-home a img{
+    height: 400px; 
+    width: 560px;
+    border : solid black 3px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  a{
+  text-decoration:none;
+  width: 100%;
+  }
+  .icon-like-comment{
+  height: 293px;
+  width: 293px;
+  }
+  .icon-like-comment img {
+  width: 50px;
+  height: 50px;
+  }
+  .a-img-txt{
+  height: 293px;
+  width: 293px;
+  }
+  
+  .icon-like-comment-home img{
+    width: 100%;
+    height: 100%;
+  
+  }
+  /*****************MODALE POPUP*****************/
+  
+  .popup{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.337);
+    z-index: 1000;
+    transition: top 250ms linear;
+  }
+  
+  .popup.active{
+    display: inline-block;
+  
+  }
+  
+  .popup-content{
+    position: fixed;
+    left: 50%;
+    top: 5%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    height: 650px;
+    max-height: 980px;
+    min-width: 520px;
+    width: 70%;
+    border: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+  }
+  
+  .popup-content.active{
+    opacity: 1;
+    top: 10%;
+  }
+  
+  .popup-header{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2%;
+    background-color: aliceblue;
+    color: aliceblue;
+  }
+  
+  .popup-body{
+    height: 80%;
+    padding: 2%;
+    overflow-y: auto;
+    background-color: aliceblue;
+  }
+  
+  .popup-body img{
+    width: 100%;
+    background-size: cover;
+  }
+  
+  
+  .popup-footer{
+    height: 10%;
+    padding: 2%;
+    display: flex;
+    justify-content: flex-end;
+    background-color: aliceblue;
+  }
+  .btn.btn-primary.text-center{
+    color: white;
+    background-color: gray;
+    margin-top: 1vw;
+  }
+  
+  /********FORM AJOUT ***************/
+  
+  .ajouter{
+    background-color: rgb(83, 82, 82);
+    text-align: center;
+    padding: 30px;
+    color: white;
+    margin-left: 20vw;
+    margin-right: 20vw;
+  
+  }
+  .ajouter form{
+    margin-left: 15vw;
+    margin-top: 3vw;
+  }
+  .insta img{
+    margin-top: 3vw;
+    width: 50%;
+    height: 50%;
+    margin-left: 25vw;
+    border-color: black;
+    border: 2px solid;
+  }
+  /*************formulaire******/
+  
+  .image-modal{
+    height: 500px;
+    width: 600px;
+  } 

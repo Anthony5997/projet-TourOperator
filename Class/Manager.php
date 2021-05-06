@@ -12,7 +12,7 @@ class Manager{
     }
 
     public function getAllDestinations(){
-        $queryStatement = $this->pdo->prepare("SELECT * FROM destination");
+        $queryStatement = $this->pdo->prepare("SELECT * FROM destination GROUP BY location");
         $queryStatement->execute();
         return $listDestination = $queryStatement->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -33,32 +33,55 @@ class Manager{
     }
 
     public function getOperatorByDestination(string $location){
-        $allOperatorByDestination = $this->pdo->prepare("SELECT * FROM  tour_operator 
-    JOIN destination ON tour_operator.id = destination.id_tour_operator WHERE location = :location");
-    $allOperatorByDestination->bindValue(':location', $location ,PDO::PARAM_STR);
-    $allOperatorByDestination->execute();
-    $operatorList = $allOperatorByDestination->fetchAll(PDO::FETCH_ASSOC);
-    $arrayDestination= [];
-    foreach($operatorList as $operator){
-        array_push($arrayDestination, new TourOperator($operator)); 
-    }
-    
-        // while ($donneesOperatorByDestination = $allOperatorByDestination->fetch(PDO::FETCH_ASSOC))
-    // {
-    //   array_push($operatorsByDestination, new TourOperator($donneesOperatorByDestination)); 
-
-    // }
-
+        $allOperatorByDestination = $this->pdo->prepare(
+            "SELECT * FROM  tour_operator 
+            JOIN destination 
+                ON tour_operator.id = destination.id_tour_operator 
+            /*JOIN review
+                ON tour_operator.id = review.id_tour_operator */
+            WHERE location = :location");
+   
+        $allOperatorByDestination->bindValue(':location', $location ,PDO::PARAM_STR);
+        $allOperatorByDestination->execute();
+        $operatorList = $allOperatorByDestination->fetchAll(PDO::FETCH_ASSOC);
+        $arrayDestination= [];
+        foreach($operatorList as $operator){
+            $arrayInfo = [
+                "operator"=> new TourOperator(['id' => $operator['id_tour_operator'], "name"=>$operator['name'], "grade"=>$operator['grade'],"link"=>$operator['link'], "is_premium"=>$operator['is_premium'], "photo_link"=>$operator['photo_link']]),
+                "destination"=> new Destination(['id' => $operator['id'], "location"=>$operator['location'], "price" => $operator['price'], 'id_tour_operator'=> $operator['id_tour_operator']]),
+                //"review"=> new Review(['id' => $operator['id'], "location"=>$operator['location'], "price" => $operator['price'], 'id_tour_operator'=> $operator['id_tour_operator']])
+            ];
+            array_push($arrayDestination,  $arrayInfo);
+        }
     return $arrayDestination;
   }
 
 
-    public function createReview(){
+    public function createReview(Review $review){
+        $locationStatement = $this->pdo->prepare("INSERT INTO review (message, author, user_grade, id_tour_operator) VALUE (:message, :author, :grade, :id_tour_operator)");
+        $locationStatement->bindValue("message", $review->getMessage(), PDO::PARAM_STR);
+        $locationStatement->bindValue("author", $review->getAuthor(), PDO::PARAM_STR);
+        $locationStatement->bindValue("grade", $review->getUserGrade(), PDO::PARAM_INT);
+        $locationStatement->bindValue("id_tour_operator", $review->getId_tour_operator(), PDO::PARAM_INT);
+        $locationStatement->execute();
 
     }
 
-    public function getReviewByOperator(){
+    public function getReviewByOperator(TourOperator $operator){
+        $queryStatement = $this->pdo->prepare("SELECT * FROM review WHERE id_tour_operator = :id");
+        $queryStatement->bindValue(":id", $operator->getId());
+        $queryStatement->execute();
+        return $listReview = $queryStatement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
+    public function getAverageGradeByOperator(TourOperator $operator){
+        $queryStatement = $this->pdo->prepare("SELECT AVG (user_grade) AS moyenne FROM review WHERE review.id_tour_operator = :id");
+        $queryStatement->bindValue(":id", $operator->getId(), PDO::PARAM_INT);
+        $queryStatement->execute();
+        // var_dump("AVERAGE IN METHOD", $queryStatement->fetch());
+        $moyenne = $queryStatement->fetch(PDO::FETCH_ASSOC);
+        $operator->hydrate(['grade'=>$moyenne['moyenne']]);
+        $this->updateTO($operator);
     }
 
     public function getAllOperators(){
@@ -68,6 +91,15 @@ class Manager{
 
     }
 
+    public function updateTO(TourOperator $operator){
+        $CharacterStatement = $this->pdo->prepare('UPDATE tour_operator SET grade= :grade, link=:link, is_premium = :is_premium, photo_link = :photo_link WHERE id=:id');
+        $CharacterStatement->bindValue("grade", $operator->getGrade());
+        $CharacterStatement->bindValue("is_premium", $operator->getPremium(), PDO::PARAM_BOOL);
+        $CharacterStatement->bindValue("link", $operator->getLink(), PDO::PARAM_STR);
+        $CharacterStatement->bindValue("photo_link", $operator->getPhoto_link(), PDO::PARAM_STR);
+        $CharacterStatement->bindValue("id", $operator->getId(), PDO::PARAM_INT);
+        $CharacterStatement->execute();
+    }
     public function becomePremium(TourOperator $tourOperator){
         $CharacterStatement = $this->pdo->prepare('UPDATE tour_operator SET is_premium = :true WHERE id=:id');
         $CharacterStatement->bindValue("true", true, PDO::PARAM_BOOL);
@@ -88,12 +120,6 @@ class Manager{
             'grade'=>0,
             'is_premium'=>false
         ]);
-        // $_SESSION["id"] = $tourOperator->getId();
-        // $_SESSION["name"] = $tourOperator->getName();
-        // $_SESSION["grade"] = $tourOperator->getGrade();
-        // $_SESSION["premium"] = $tourOperator->getPremium();
-        // $_SESSION["connect"] = 1;
-
     }
 
     public function getOperatorById($param){
@@ -124,7 +150,7 @@ class Manager{
         return (bool) $result;
     }
 
-    public function createDestination($destination){
+    public function createDestination(Destination $destination){
         $locationStatement = $this->pdo->prepare("INSERT INTO destination (location, price, id_tour_operator) VALUE (:location, :price, :id_tour_operator)");
         $locationStatement->bindValue("location", $destination->getLocation(), PDO::PARAM_STR);
         $locationStatement->bindValue("price", $destination->getPrice(), PDO::PARAM_INT);
@@ -134,5 +160,17 @@ class Manager{
         $idOperatorCreated = (int)$this->pdo->lastInsertId();
         $destination->hydrate(['id'=> $idOperatorCreated]);
 */
+    }
+
+    public function deleteOperator(TourOperator $operator){
+        $locationStatement = $this->pdo->prepare("DELETE FROM tour_operator WHERE id= :id");
+        $locationStatement->bindValue(":id", $operator->getId(), PDO::PARAM_INT);
+        $locationStatement->execute();
+    }
+
+    public function addPicture(Picture $picture){
+        $addImg = $this->pdo->prepare("INSERT INTO tour_operator(photo_link) VALUE (:photo_link)");
+        $addImg->bindValue(":photo_link", $picture->getLink());
+        $addImg->execute();
     }
 }

@@ -5,6 +5,7 @@ class Review{
     private int $id;
     private string $message;
     private string $author;
+    private $user_grade;
     private int $id_tour_operator;
 
     /*Methode*/
@@ -38,6 +39,10 @@ class Review{
         return $this->author;
     }
 
+    public function getUserGrade(){
+        return $this->user_grade;
+    }
+
     public function getId_tour_operator(){
         return $this->id_tour_operator;
     }
@@ -52,6 +57,10 @@ class Review{
 
     public function setAuthor($author){
         $this->author = $author;
+    }
+
+    public function setUser_grade($user_grade){
+        $this->user_grade = $user_grade;
     }
 
     public function setId_tour_operator($id_tour_operator){
