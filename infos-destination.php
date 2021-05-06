@@ -29,7 +29,7 @@ $listDestination = $manager->getOperatorByDestination($location);
 </div>
 </section>
 <section class="indexContent">
-    <h1 class="text-center">les meilleurs Voyages</h1>
+    <h1 class="text-center">Les meilleurs Voyages</h1>
     <h4 class="text-center">Destination : <?=$location;?></h4>
     <div class="container">
         <div class="row d-flex justify-content-around">
@@ -52,7 +52,8 @@ $listDestination = $manager->getOperatorByDestination($location);
                             <a class="text-center">Voir les avis</a>
                     </div>
                     <div class="comment-zone" id="modify-state<?=$operatorOnList['operator']->getId();?>">
-                      <?php foreach($allReviews as $review){
+                     <div class='list-review<?=$operatorOnList['operator']->getId();?>'>
+                     <?php foreach($allReviews as $review){
                         $review = new Review($review);?>
                         <div class="card-review">
                           <h4><?=" Auteur : " . $review->getAuthor();?></h4>
@@ -60,6 +61,7 @@ $listDestination = $manager->getOperatorByDestination($location);
                           <p class="note"><?= "Note du client : " .   $review->getUserGrade()?></p>
                         </div>
                         <?php }?>
+                        </div>
                       </div>
                     </div>
                   </div>

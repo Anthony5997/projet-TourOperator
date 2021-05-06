@@ -44,7 +44,7 @@ include('partials/header.php');
         </div>
     </div>
 <section class="indexContent">
-    <h1 class="text-center">les meilleurs Voyages</h1>
+    <h1 class="text-center">Les meilleurs Voyages</h1>
     <div class="container">
         <div class="row justify-content-center">
             <?php

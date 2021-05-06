@@ -1,22 +1,26 @@
-let btn = document.querySelector('.sendForm')
+let btns = document.querySelectorAll('.sendForm')
 
 
-btn.addEventListener('click',(e)=>{
-    e.preventDefault()
-    sendReview()
+btns.forEach((btn)=>{
+
+    btn.addEventListener('click',(e)=>{
+        e.preventDefault()
+        let idTo = e.target.getAttribute('data-id-to')
+        sendReview(idTo)
+    })
 })
 
-function sendReview(){
-    let author =  document.getElementById("author");
-   let id_tour_operator = document.getElementById("id_tour_operator");
-   let message = document.getElementById("message");
-   let grade_review = document.getElementById("grade");
+function sendReview(idTo){
+    let author =  document.getElementById("author"+idTo);
+//    let id_tour_operator = document.getElementById("id_tour_operator"+idTo);
+   let message = document.getElementById("message"+idTo);
+   let grade_review = document.getElementById("grade"+idTo);
 
     formData = new FormData()
     formData.append('author', author.value)
-    formData.append('id_tour_operator', id_tour_operator.value)
+    formData.append('id_tour_operator', idTo)
     formData.append('message', message.value)
-    formData.append('grade_review', grade_review.value)
+    formData.append('grade', grade_review.value)
 
     fetch('/project-tourOperator/process/form-add-review.php', {
         method: "post",
@@ -24,19 +28,20 @@ function sendReview(){
     }).then(()=>{
         message.value="";
         grade_review.value=""; 
-        load_Review();
+        load_Review(idTo);
     })
 }
 
-function load_Review(){
+function load_Review(idTo){
 let formData2 = new FormData()
-formData2.append('id_tour_operator', id_tour_operator.value)
-fetch('/treatment/getReviews.php', {
+formData2.append('id_tour_operator', idTo)
+fetch('/project-tourOperator/process/reviewSend.php', {
     method:'post',
     body:formData2
 }).then((response)=>{
     return response.text();
 }).then((data)=>{
-    document.querySelector('.commentaire-list').innerHTML = data
+    console.log(data)
+    document.querySelector('.list-review'+idTo).innerHTML = data
 })
 }
