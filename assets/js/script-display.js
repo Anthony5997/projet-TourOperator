@@ -5,6 +5,8 @@ $(document).ready(function(){
     $(".hidden-form-comment").hide();
     $(".form-destination").hide();
     $(".form-operator").hide();
+    $(".hiddenReview").hide();
+    $(".hiddenLink").hide();
 });
 
 $( ".modify" ).click(function() {
@@ -35,4 +37,14 @@ $( ".hidden-form-destination" ).click(function() {
 
   $( ".hidden-form-operator" ).click(function() {
       $(`#hidden-form-operator`).toggle();
+    });
+
+    $( ".modify-review" ).click(function() {
+      let id = this.getAttribute('id');
+      $(`#modify-review${id}`).toggle();
+    });
+
+    $( ".modify-link" ).click(function() {
+      let id = this.getAttribute('id');
+      $(`#modify-link${id}`).toggle();
     });

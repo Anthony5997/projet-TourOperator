@@ -32,10 +32,10 @@ include('partials/header.php');
                     <a class="nav-link text-center" href="/project-tourOperator/index.php">Home</a>
                 </div>
                 <div class="col-sm-4 d-flex">
-                    <a class="nav-link text-center" href="#">Destinations</a>
+                    <a class="nav-link text-center" href="/project-tourOperator/destination.php">Destinations</a>
                 </div>
                 <div class="col-sm-4">
-                    <a class="nav-link text-center " href="#">Agences</a>
+                    <a class="nav-link text-center " href="/project-tourOperator/agence.php">Agences</a>
                 </div>
             </div>
         </div>
@@ -44,6 +44,10 @@ include('partials/header.php');
     <h1 class="text-center">Nos agences Partenaires</h1>
     <div class="container">
         <div class="row d-flex justify-content-around">
+        <form class="d-flex">
+            <input class="form-control m-2" name="search-agency" type="search" placeholder="Search" aria-label="Search" id="search-agency">
+        </form>
+        <div  class="row justify-content-center agency-list">
       <?php
           $manager = new Manager($bdd);
           $listOperator = $manager->getAllOperators();
@@ -82,9 +86,11 @@ include('partials/header.php');
                 <?php include('review-form.php'); ?>
             </div>
           <?php }  ?>
+        </div>
     </div>
 </section>
 
 <?php
+    include("partials/footer-display.php");
     include('partials/footer.php');
 ?>

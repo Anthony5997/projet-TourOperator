@@ -131,6 +131,15 @@ class Manager{
             }
         }
 
+        public function getReviewById($param){
+            if (is_int($param)) {
+                   $CharacterStatement = $this->pdo->prepare('SELECT * FROM review WHERE id = :id');
+                   $CharacterStatement->bindValue(':id', $param, PDO::PARAM_INT);  
+                   $CharacterStatement->execute();
+                   return $CharacterStatement->fetch(PDO::FETCH_ASSOC);
+               }
+           }
+
     public function getOperator(TourOperator $operator){
                
             $result = $this->pdo->prepare('SELECT id, name, pass, grade, link, is_premium FROM tour_operator WHERE name= :name');
@@ -172,5 +181,19 @@ class Manager{
         $addImg = $this->pdo->prepare("INSERT INTO tour_operator(photo_link) VALUE (:photo_link)");
         $addImg->bindValue(":photo_link", $picture->getLink());
         $addImg->execute();
+    }
+
+    public function deleteReview(Review $review){
+        $locationStatement = $this->pdo->prepare("DELETE FROM review WHERE id= :id");
+        $locationStatement->bindValue(":id", $review->getId(), PDO::PARAM_INT);
+        $locationStatement->execute();
+    }
+
+    public function searchDestination(string $data){
+        $dataStatement = $this->pdo->prepare("SELECT location FROM destination WHERE location LIKE CONCAT('%',:location,'%');:location");
+        $dataStatement->bindValue(":location", $data);
+        $result = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+
     }
 }

@@ -6088,6 +6088,11 @@ textarea.form-control-lg {
   overflow: auto;
   padding-right: 5px;
 }
+.card-info-destination .comment-zone::-webkit-scrollbar {
+  background-color: grey;
+  border-radius: 4px;
+  width: 5px;
+}
 .card-info-destination .card-review {
   width: 100%;
   margin-top: 10px;
@@ -6198,6 +6203,33 @@ textarea.form-control-lg {
 
 /******************IMAGE PROFILE********************/
 /***********************ADMIN PANNEL****************/
+.hiddenReview {
+  height: 215px;
+  overflow-y: scroll;
+}
+
+.hiddenReview::-webkit-scrollbar {
+  background-color: grey;
+  border-radius: 4px;
+  width: 5px;
+}
+
+.admin-review {
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin: 6px;
+  padding: 5px;
+}
+.admin-review h6, .admin-review .h6 {
+  text-decoration: underline;
+}
+.admin-review p {
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 6px;
+}
+
 .admin-link {
   width: 20%;
   text-decoration: none;

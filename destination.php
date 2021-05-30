@@ -40,16 +40,20 @@ include('partials/header.php');
             </div>
         </div>
     </div>
-<section class="indexContent">
-    <h1 class="text-center">Les meilleurs Voyages</h1>
-    <div class="container">
-        <div class="row justify-content-center">
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="text-center">Toute nos destinations</h1>
+        <form class="d-flex">
+            <input class="form-control m-2" name="search-destination" type="search" placeholder="Search" aria-label="Search" id="search-destination">
+        </form>
+        <div  class="row justify-content-center destination-list">
+ 
             <?php
                 $manager = new Manager($bdd);
                 $listDestination = $manager->getAllDestinations();
+    
                 foreach($listDestination as $destination){
                     $destination = new Destination($destination); ?>
-
                     <div class="d-flex justify-content-center card col-xl-3 col-md-5 col-sm-12 p-2 m-3 ">
                         <img class="card-img-top" src="<?= $destination->getPhoto_link_destination();?>" alt="Card image cap">
                         <div class="card-body">
@@ -59,10 +63,12 @@ include('partials/header.php');
                             <li class="list-group-item"><?= "<a href='/project-tourOperator/infos-destination.php?destination=".$destination->getLocation()."'>Voir les opérateur proposant cette destination</a><br>"?></li>
                         </ul>
                     </div>
-             <?php }?>
-            </div>
+                <?php }?>
         </div>
+        </div>
+    </div>
 </section>
+
 <?php
     include("partials/footer-display.php");
     include('partials/footer.php');
